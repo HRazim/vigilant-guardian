@@ -1,0 +1,3 @@
+# Identique au Dockerfile.api (même base Python, même dépendances)
+# La commande est overridée dans docker-compose.yml
+# Ce fichier est un symlink ou une copie de Dockerfile.api
