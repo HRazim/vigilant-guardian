@@ -42,7 +42,7 @@ chromadb = ">=0.4"
 # Auth (section 8.2)
 python-jose = {extras = ["cryptography"], version = "*"}
 passlib = "*"
-bcrypt = "*"
+bcrypt = "4.0.1"
 # Utils
 python-dotenv = "*"
 tenacity = "*"
@@ -51,6 +51,7 @@ structlog = "*"
 weasyprint = "*"
 # Email validation
 email-validator = "*"
+python-multipart = "^0.0.22"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "*"
