@@ -1,3 +1,8 @@
+# ============================================================================
+# Vigilant Guardian — Dockerfile Frontend (section 4.3)
+# Next.js 14 multi-stage — node:20-alpine
+# ============================================================================
+
 # === Stage 1: Build ===
 FROM node:20-alpine AS builder
 
@@ -16,7 +21,6 @@ FROM node:20-alpine AS runtime
 
 WORKDIR /app
 
-# Sécurité : utilisateur non-root
 RUN addgroup -S appuser && adduser -S appuser -G appuser
 
 COPY --from=builder /app/.next/standalone ./
