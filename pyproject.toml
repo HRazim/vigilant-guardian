@@ -4,37 +4,53 @@ version = "0.1.0"
 description = "AI-Powered Zero-Day Vulnerability Intelligence"
 authors = ["Vigilant Guardian Team"]
 readme = "README.md"
+packages = [{include = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
+# Framework API (section 3.1)
 fastapi = ">=0.110"
 uvicorn = {extras = ["standard"], version = "*"}
 pydantic = ">=2.0"
 pydantic-settings = "*"
+# ORM + Migrations (section 3.1)
 sqlalchemy = ">=2.0"
 alembic = "*"
 asyncpg = "*"
+psycopg2-binary = "*"
+# Task Queue (section 3.1)
 celery = ">=5.3"
 redis = ">=5.0"
 flower = "*"
+# NLP & ML (section 3.1)
 sentence-transformers = "*"
 spacy = "*"
 scikit-learn = "*"
 hdbscan = "*"
 faiss-cpu = "*"
+numpy = "*"
+# LLM Clients (section 3.4)
 openai = "*"
 anthropic = "*"
+# HTTP
 httpx = "*"
 requests = "*"
+# Web Scraping (section 3.1)
 beautifulsoup4 = "*"
+# Vector Store RAG (section 3.2)
+chromadb = ">=0.4"
+# Auth (section 8.2)
 python-jose = {extras = ["cryptography"], version = "*"}
 passlib = "*"
 bcrypt = "*"
+# Utils
 python-dotenv = "*"
 tenacity = "*"
 structlog = "*"
-chromadb = ">=0.4"
+# Reports (section 9.2 Semaine 8)
 weasyprint = "*"
+# Email validation
+email-validator = "*"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "*"
@@ -60,6 +76,10 @@ plugins = ["pydantic.mypy"]
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
 testpaths = ["tests"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
 
 [build-system]
 requires = ["poetry-core"]

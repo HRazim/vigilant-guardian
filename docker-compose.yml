@@ -1,7 +1,10 @@
 version: '3.9'
 
 services:
-  # === DATA LAYER ===
+  # ═══════════════════════════════════════════════════════════════════════
+  # DATA LAYER (section 3.2)
+  # ═══════════════════════════════════════════════════════════════════════
+
   db:
     image: postgres:16-alpine
     environment:
@@ -35,7 +38,10 @@ services:
     environment:
       CHROMA_SERVER_AUTH_CREDENTIALS: ${CHROMA_TOKEN}
 
-  # === BACKEND ===
+  # ═══════════════════════════════════════════════════════════════════════
+  # BACKEND (section 4.2)
+  # ═══════════════════════════════════════════════════════════════════════
+
   api:
     build:
       context: .
@@ -49,7 +55,10 @@ services:
       CHROMA_PORT: 8000
       OPENAI_API_KEY: ${OPENAI_API_KEY}
       ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      MISTRAL_API_KEY: ${MISTRAL_API_KEY}
       JWT_SECRET: ${JWT_SECRET}
+      NVD_API_KEY: ${NVD_API_KEY}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
     depends_on:
       db: { condition: service_healthy }
       redis: { condition: service_healthy }
@@ -66,6 +75,8 @@ services:
       CHROMA_HOST: chroma
       OPENAI_API_KEY: ${OPENAI_API_KEY}
       ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      NVD_API_KEY: ${NVD_API_KEY}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
     depends_on:
       db: { condition: service_healthy }
       redis: { condition: service_healthy }
@@ -78,7 +89,10 @@ services:
     depends_on:
       redis: { condition: service_healthy }
 
-  # === FRONTEND ===
+  # ═══════════════════════════════════════════════════════════════════════
+  # FRONTEND (section 4.3)
+  # ═══════════════════════════════════════════════════════════════════════
+
   frontend:
     build:
       context: ./frontend
